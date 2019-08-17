@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import SiteHeader from './components/header/SiteHeader';
+import SiteBody from './components/body/SiteBody';
+import SiteFooter from './components/footer/SiteFooter';
+import axios from 'axios';
 
-function App() {
+
+function App() { 
+  let [arts, setArts] = useState([{title: "abc",content: "content here!"}]);
+  const url = "http://localhost:3001/category?category=htmlcss";
+  console.log("before get API");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SiteHeader method={getDataApi()}></SiteHeader>
+      <SiteBody postList={arts}></SiteBody>
+      <SiteFooter></SiteFooter>
     </div>
   );
+  function getDataApi(){
+    return ()=>{
+    axios.get(url)
+    .then(function (response) {
+      setArts(response.data);
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .finally(function () {
+      // always executed
+    })};
+  }
 }
+
 
 export default App;
