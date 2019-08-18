@@ -8,7 +8,7 @@ import axios from 'axios';
 
 function App() { 
   let [arts, setArts] = useState([{title: "abc",content: "content here!"}]);
-  const url = "http://localhost:8080/category?category=htmlcss";
+  const url = "https://q-site-server.herokuapp.com:8080/category?category=htmlcss";
   console.log("before get API");
   return (
     <div className="App">
