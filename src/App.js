@@ -21,6 +21,7 @@ function App() {
     return ()=>{
     axios.get(url)
     .then(function (response) {
+      console.log(response);
       setArts(response.data);
     })
     .catch(function (error) {
