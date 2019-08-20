@@ -1,11 +1,18 @@
 import React from 'react';
 import './LeftBarItem.css';
+import {Row, Col, Container } from 'react-bootstrap';
 
 function LeftBarItem(props) {
-  const {title} = props;
+  const { title, onClickItem } = props;
   return (
-    <div className="LeftBarItem">
-      <div>{title}</div>   
+    <div className="LeftBarItem" onClick={onClickItem}>    
+      <Container>
+        <Row>
+          <Col>
+            <div>{title}</div> 
+          </Col>
+        </Row>
+      </Container>       
     </div>
   );
 }

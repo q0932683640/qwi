@@ -7,10 +7,16 @@ function LeftBar(props) {
   return (
     <div className="LeftBar">
       {
-        postList.map((item, index) => <LeftBarItem key={index} title={item.title}></LeftBarItem>)
+        postList.map((item, index) => <LeftBarItem key={index} title={item.title} onClickItem={itemClickCallback(index)}></LeftBarItem>)
       }
     </div>
   );
+}
+
+function itemClickCallback(index){
+  return ()=>{
+    
+  }
 }
 
 export default LeftBar;

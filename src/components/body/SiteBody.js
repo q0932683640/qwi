@@ -1,22 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './SiteBody.css';
 import './content/Content';
 import LeftBar from './left-bar/LeftBar';
 import Content from './content/Content';
-import {Row, Col } from 'react-bootstrap';
+import {Row, Col, Container } from 'react-bootstrap';
 
 function SiteBody(props) {
+  const {listPost} = props;
+  let [post, setPost] = useState({});
   return (
     <div className="SiteBody">
+      <Container fluid={true}>
         <Row>
-            <Col xs={3}>
-              <LeftBar postList={props.postList}></LeftBar>
+            <Col xs={2} className="pl-0">
+              <LeftBar postList={listPost}></LeftBar>
             </Col>
-            <Col xs={9}>
-              <Content title={props.title} content={props.content}></Content>
-            </Col>
-            
-        </Row>          
+            <Col xs={10} className="pl-0">
+              <Content title={post.title} content={post.content}></Content>
+            </Col>           
+        </Row>   
+      </Container>       
     </div>
   );
 }

@@ -10,21 +10,29 @@ import{
 } from 'react-bootstrap';
 
 function SiteHeader(props) {
-  const {method} = props;
+  const {
+    methodHtmlCss,
+    methodJava,
+    methodJavaScript,
+    methodNodeJS,
+    methodReactJS,
+    methodSpringBoot
+  } = props;
   return (
     <div className="SiteHeader">
-      <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href="#home">QuynhPV</Navbar.Brand>
+      <div>
+      <Navbar variant="dark">
+      <Navbar.Brand href="#home" style={{color:'#ff502f',fontWeight:'bold'}}>QuynhPV</Navbar.Brand>
       <Nav className="mr-auto">
-        <NavDropdown title="Skills" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/java">HTML/CSS</NavDropdown.Item>
-          <NavDropdown.Item href="#action/js">Java Script</NavDropdown.Item>
-          <NavDropdown.Item onClick={method}>Java</NavDropdown.Item>
+        <NavDropdown title="Skills" id="skills-dropdown">
+          <NavDropdown.Item onClick={methodHtmlCss}>HTML/CSS</NavDropdown.Item>
+          <NavDropdown.Item onClick={methodJavaScript}>Java Script</NavDropdown.Item>
+          <NavDropdown.Item onClick={methodJava}>Java</NavDropdown.Item>
         </NavDropdown>
-        <NavDropdown title="Framework" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/spring">Spring Boot</NavDropdown.Item>
-          <NavDropdown.Item href="#action/nodejs">Node JS</NavDropdown.Item>
-          <NavDropdown.Item href="#action/reactjs">React JS</NavDropdown.Item>
+        <NavDropdown title="Framework" id="framework-dropdown">
+          <NavDropdown.Item onClick={methodSpringBoot}>Spring Boot</NavDropdown.Item>
+          <NavDropdown.Item onClick={methodNodeJS}>Node JS</NavDropdown.Item>
+          <NavDropdown.Item onClick={methodReactJS}>React JS</NavDropdown.Item>
         </NavDropdown>
         <Nav.Link href="#about">About</Nav.Link>
       </Nav>
@@ -33,6 +41,7 @@ function SiteHeader(props) {
         <Button variant="outline-info">Search</Button>
       </Form>
     </Navbar>
+    </div>
     </div>
   );
 }

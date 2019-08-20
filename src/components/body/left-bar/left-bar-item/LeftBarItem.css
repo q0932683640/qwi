@@ -1,3 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.LeftBarItem{
+    padding: 5px 5px;
+    text-align: center
+}
 .LeftBarItem:hover {
-    background: #999;
+    cursor: pointer;
+    background: #5EB1BF;
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.8);  
+    transition: 0.5s;
+}
+Col>div{
+    font-size: 22px;
 }
