@@ -4,7 +4,6 @@ import LeftBarItem from './left-bar-item/LeftBarItem';
 
 function LeftBar(props) {
   const {postList, arrEvent} = props;
-  console.log("arrEvent in leftbar: ", arrEvent);
   return (
     <div className="LeftBar">
       {
@@ -13,9 +12,4 @@ function LeftBar(props) {
     </div>
   );
 }
-// function clickTest(index){
-//   return () => {
-//     console.log("index callback: "+ index);
-//   }
-// }
 export default LeftBar;

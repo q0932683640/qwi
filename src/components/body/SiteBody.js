@@ -9,15 +9,11 @@ function SiteBody(props) {
   const {listPost} = props;
   let [post, setPost] = useState({});
   let arrEvent = [];
-  console.log("listPost in SiteBody ", listPost);
   for(let i = 0; i < listPost.length; i++){
     arrEvent = [...arrEvent, itemClick(i)];
   }
-  console.log("arrEvent: ",arrEvent);
   function itemClick(index){
-    console.log("index "+ index +" is calling!");
     return () => {
-      console.log("index callback: "+ index);
       setPost(listPost[index]);
     }
   }
@@ -25,10 +21,10 @@ function SiteBody(props) {
     <div className="SiteBody">
       <Container fluid={true}>
         <Row>
-            <Col xs={2} className="pl-0">
+            <Col md={3} lg={2} sm={4} className="pl-0 pr-0">
               <LeftBar arrEvent={arrEvent} postList={listPost}></LeftBar>
             </Col>
-            <Col xs={10} className="pl-0">
+            <Col md={9} lg={10} sm={8} className="pl-0 pr-0">
               <Content title={post.title} content={post.content}></Content>
             </Col>           
         </Row>   
