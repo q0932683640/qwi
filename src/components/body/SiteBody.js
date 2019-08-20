@@ -19,7 +19,7 @@ function SiteBody(props) {
   }
   return (
     <div className="SiteBody">
-      <Container fluid={true}>
+      <Container>
         <Row>
             <Col md={3} lg={2} sm={4} className="pl-0 pr-0">
               <LeftBar arrEvent={arrEvent} postList={listPost}></LeftBar>

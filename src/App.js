@@ -8,7 +8,6 @@ import axios from 'axios';
 
 function App() { 
   let [arts, setArts] = useState([]);
-  console.log("before get API");
   return (
     <div className="App">
       <SiteHeader 

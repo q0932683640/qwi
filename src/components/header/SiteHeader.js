@@ -1,12 +1,16 @@
 import React from 'react';
 import './SiteHeader.css';
+import logo from './images/logo.png';
 import{
   Navbar,
   Nav,
   Form,
   FormControl,
   Button,
-  NavDropdown
+  NavDropdown,
+  Container,
+  Row,
+  Col
 } from 'react-bootstrap';
 
 function SiteHeader(props) {
@@ -21,8 +25,13 @@ function SiteHeader(props) {
   return (
     <div className="SiteHeader">
       <div>
-      <Navbar collapseOnSelect expand="md" variant="dark">
-      <Navbar.Brand href="#home" style={{color:'#ff502f',fontWeight:'bold'}}>QuynhPV</Navbar.Brand>
+        <Container>
+          <Row>
+            <Col>
+            <Navbar collapseOnSelect expand="md" variant="dark">
+      <Navbar.Brand href="#home" style={{color:'#ff502f',fontWeight:'bold'}}>
+        <img src={logo} alt="image here!" width="40px"></img>
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
@@ -44,6 +53,9 @@ function SiteHeader(props) {
         </Form>
       </Navbar.Collapse>
     </Navbar>
+            </Col>
+          </Row>
+        </Container>
     </div>
     </div>
   );
