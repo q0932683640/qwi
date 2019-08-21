@@ -1,15 +1,15 @@
 import React from 'react';
 import './LeftBar.css';
-import LeftBarItem from './left-bar-item/LeftBarItem';
+import LeftBarItem from './body-post-leftbar-item/BodyPostLeftBarItem';
 
-function LeftBar(props) {
+function BodyPostLeftBar(props) {
   const {postList, arrEvent} = props;
   return (
-    <div className="LeftBar">
+    <div className="BodyPostLeftBar">
       {
         postList.map((item, index) => <LeftBarItem key={index} title={item.title} onClickItem={arrEvent[index]}></LeftBarItem>)
       }
     </div>
   );
 }
-export default LeftBar;
+export default BodyPostLeftBar;

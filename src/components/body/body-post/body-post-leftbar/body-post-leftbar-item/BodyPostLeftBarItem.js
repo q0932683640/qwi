@@ -1,12 +1,12 @@
 import React from 'react';
-import './LeftBarItem.css';
+import './BodyPostLeftBarItem.css';
 import {Row, Col, Container } from 'react-bootstrap';
 
-function LeftBarItem(props) {
+function BodyPostLeftBarItem(props) {
   const { title, onClickItem} = props;
   
   return (
-    <div className="LeftBarItem" onClick={onClickItem}>    
+    <div className="BodyPostLeftBarItem" onClick={onClickItem}>    
       <Container>
         <Row>
           <Col>
@@ -17,4 +17,4 @@ function LeftBarItem(props) {
     </div>
   );
 }
-export default LeftBarItem;
+export default BodyPostLeftBarItem;

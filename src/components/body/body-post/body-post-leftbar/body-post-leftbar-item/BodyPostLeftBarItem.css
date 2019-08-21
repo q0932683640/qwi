@@ -3,11 +3,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-.LeftBarItem{
+.BodyPostLeftBarItem{
     padding: 5px 5px;
     text-align: center
 }
-.LeftBarItem:hover {
+.BodyPostLeftBarItem:hover {
     cursor: pointer;
     background: rgb(65, 154, 170);
     border-radius: 5px;
