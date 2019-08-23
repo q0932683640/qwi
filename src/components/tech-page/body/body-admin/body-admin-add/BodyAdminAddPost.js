@@ -36,7 +36,7 @@ function BodyAdminAddPost() {
                                     <Form.Label>Content</Form.Label>
                                     <Form.Control as="textarea" rows="10" onChange={(evt)=>{content=evt.target.value;}}/>
                                 </Form.Group>
-                                <Button variant="primary" type="button" onClick={sendData()}>Submit</Button>
+                                <Button variant="primary" type="button" onClick={sendData}>Submit</Button>
                             </Form>
                         </Col>
                     </Row>
@@ -44,34 +44,14 @@ function BodyAdminAddPost() {
             </div>
         </div>
     );
-
-    // function sendData(){
-    //     return ()=>{
-    //         axios.options(urlAddPost,{})
-    //         .then(function (response) {
-    //             axios.post(urlAddPost, {title:title, category:category, content:content})
-    //             .then(function (response) {
-    //                 console.log(response);
-    //             })
-    //             .catch(function (error) {
-    //                 console.log(error);
-    //             });
-    //         })             
-    //         .catch(function (error) {
-    //             console.log(error);
-    //         });        
-    //     }
-    // }
     function sendData(){
-        return ()=>{
-            axios.post(urlAddPost, {title:title, category:category, content:content})
-                .then(function (response) {
-                    console.log(response);
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });       
-        }
+        axios.post(urlAddPost, {title:title, category:category, content:content})
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+        });       
     }
 }
 
