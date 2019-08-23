@@ -5,7 +5,7 @@ import TechBody from './body/TechBody';
 import TechFooter from './footer/TechFooter';
 
 function TechPage() { 
-  const urlHost = "https://q-site-server.herokuapp.com/find?category=";
+  const urlHost = "http://q-site-server.herokuapp.com/find?category=";
     //the second parameter: isAdmin?
   let [dataPost, setDataPost] = useState([[], "show-post"]);
   return (
