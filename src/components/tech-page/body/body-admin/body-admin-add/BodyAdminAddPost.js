@@ -45,22 +45,33 @@ function BodyAdminAddPost() {
         </div>
     );
 
+    // function sendData(){
+    //     return ()=>{
+    //         axios.options(urlAddPost,{})
+    //         .then(function (response) {
+    //             axios.post(urlAddPost, {title:title, category:category, content:content})
+    //             .then(function (response) {
+    //                 console.log(response);
+    //             })
+    //             .catch(function (error) {
+    //                 console.log(error);
+    //             });
+    //         })             
+    //         .catch(function (error) {
+    //             console.log(error);
+    //         });
+            
+    //     }
+    // }
     function sendData(){
         return ()=>{
-            axios.options(urlAddPost,{})
-            .then(function (response) {
-                axios.post(urlAddPost, {title:title, category:category, content:content})
+            axios.post(urlAddPost, {title:title, category:category, content:content})
                 .then(function (response) {
                     console.log(response);
                 })
                 .catch(function (error) {
                     console.log(error);
-                });
-            })             
-            .catch(function (error) {
-                console.log(error);
-            });
-            
+            });   
         }
     }
 }
