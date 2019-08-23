@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 
 function BodyAdminAddPost() {  
-    const urlAddPost="http://q-site-server.herokuapp.com/addpost";
+    const urlAddPost="http://q-site-server.herokuapp.com/edit/addpost";
     let title;
     let category;
     let content;
@@ -47,13 +47,20 @@ function BodyAdminAddPost() {
 
     function sendData(){
         return ()=>{
-            axios.post(urlAddPost, {title:title, category:category, content:content})
+            axios.options(urlAddPost,{})
             .then(function (response) {
-                console.log(response);
-            })
+                axios.post(urlAddPost, {title:title, category:category, content:content})
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            })             
             .catch(function (error) {
                 console.log(error);
             });
+            
         }
     }
 }
