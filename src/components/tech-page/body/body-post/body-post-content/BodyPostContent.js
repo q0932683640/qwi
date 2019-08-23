@@ -1,5 +1,5 @@
 import React from 'react';
-import './Content.css';
+import './BodyPostContent.css';
 
 function Content(props) {
   const {title, content} = props;

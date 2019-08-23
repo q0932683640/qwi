@@ -1,5 +1,5 @@
 import React from 'react';
-import './HeaderComp.css';
+import './TechHeader.css';
 import logo from './images/logo.jpg';
 import {
   Navbar,
@@ -13,7 +13,7 @@ import {
   Col
 } from 'react-bootstrap';
 
-function HeaderComp(props) {
+function TechHeader(props) {
   const {
     methodHtmlCss,
     methodJava,
@@ -26,7 +26,7 @@ function HeaderComp(props) {
     adminUpdate
   } = props;
   return (
-    <div className="HeaderComp">
+    <div className="TechHeader">
       <div>
         <Container>
           <Row>
@@ -53,7 +53,6 @@ function HeaderComp(props) {
             <NavDropdown.Item href="#DeletePost" onClick={adminDelete}>Delete Post</NavDropdown.Item>
             <NavDropdown.Item href="#UpdatePost" onClick={adminUpdate}>Update Post</NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link href="#About">ABOUT</Nav.Link>
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
@@ -69,4 +68,4 @@ function HeaderComp(props) {
   );
 }
 
-export default HeaderComp;
+export default TechHeader;
