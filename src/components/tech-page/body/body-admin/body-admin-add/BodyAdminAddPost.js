@@ -13,7 +13,7 @@ function BodyAdminAddPost() {
                 <Container>
                     <Row>
                         <Col>
-                            <Form action={urlAddPost} method="POST">
+                            <Form>
                                 <h1>Add New Post</h1>
                                 <Form.Group controlId="formTitle">
                                     <Form.Label>Title</Form.Label>
@@ -54,5 +54,4 @@ function BodyAdminAddPost() {
         });       
     }
 }
-
 export default BodyAdminAddPost;
