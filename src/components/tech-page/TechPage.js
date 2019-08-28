@@ -6,8 +6,8 @@ import TechFooter from './footer/TechFooter';
 
 function TechPage() { 
   const urlHost = "http://q-site-server.herokuapp.com/find?category=";
-    //the second parameter: isAdmin?
-  let [dataPost, setDataPost] = useState([[], "show-post"]);
+  const [posts, setPosts] = useState();
+  const [act, setAct] = useState();
   return (
     <div className="App">
       <TechHeader 
@@ -21,23 +21,23 @@ function TechPage() {
         adminDelete = {adminDelete()}
         adminUpdate = {adminUpdate()}
       />
-      <TechBody dataPost={dataPost}/>
+      <TechBody posts={posts} act={act}/>
       <TechFooter />
     </div>
   );
   function adminAdd(){
     return () => {
-      setDataPost([[], "admin-add"]);
+      setAct("add");
     }
   } 
   function adminDelete(){
     return () => {
-      setDataPost([[], "admin-delete"]);
+      setAct("del")
     }
   }  
   function adminUpdate(){
     return () => {
-      setDataPost([[], "admin-update"]);
+      setAct("upd")
     }
   }     
   // Get API
@@ -46,7 +46,8 @@ function TechPage() {
     return () => {
     axios.get(url)
     .then(function (response) {
-      setDataPost([[...response.data], "show-post"]);
+      setPosts(response.data);
+      setAct("show");
     })
     .catch(function (error) {
       // handle error
@@ -61,7 +62,8 @@ function TechPage() {
     return () => {
     axios.get(url)
     .then(function (response) {
-      setDataPost([[...response.data], "show-post"]);
+      setPosts(response.data);
+      setAct("show");
     })
     .catch(function (error) {
       // handle error
@@ -76,7 +78,8 @@ function TechPage() {
     return () => {
     axios.get(url)
     .then(function (response) {
-      setDataPost([[...response.data], "show-post"]);
+      setPosts(response.data);
+      setAct("show");
     })
     .catch(function (error) {
       // handle error
@@ -87,11 +90,12 @@ function TechPage() {
     })};
   }
   function getCategoryNodeJS(){
-    const url = urlHost + "springboot";
+    const url = urlHost + "nodejs";
     return () => {
     axios.get(url)
     .then(function (response) {
-      setDataPost([[...response.data], "show-post"]);
+      setPosts(response.data);
+      setAct("show");
     })
     .catch(function (error) {
       // handle error
@@ -102,11 +106,12 @@ function TechPage() {
     })};
   }
   function getCategoryReactJS(){
-    const url = urlHost + "nodejs";
+    const url = urlHost + "reactjs";
     return () => {
     axios.get(url)
     .then(function (response) {
-      setDataPost([[...response.data], "show-post"]);
+      setPosts(response.data);
+      setAct("show");
     })
     .catch(function (error) {
       // handle error
@@ -117,11 +122,12 @@ function TechPage() {
     })};
   }
   function getCategorySpringBoot(){
-    const url = urlHost + "reactjs";
+    const url = urlHost + "springboot";
     return () => {
     axios.get(url)
     .then(function (response) {
-      setDataPost([[...response.data], "show-post"]);
+      setPosts(response.data);
+      setAct("show");
     })
     .catch(function (error) {
       // handle error

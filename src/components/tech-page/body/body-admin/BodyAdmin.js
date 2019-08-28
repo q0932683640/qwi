@@ -6,11 +6,11 @@ import BodyAdminUpdatePost from './body-admin-update/BodyAdminUpdatePost';
 import BodyAdminDeletePost from './body-admin-delete/BodyAdminDeletePost';
 
 function BodyAdmin(props){
-    const {typeAction} = props;
+    const {act} = props;
     let content;
-    if(typeAction === "admin-add")
+    if(act === "add")
         content = <BodyAdminAddPost></BodyAdminAddPost>;
-    else if (typeAction === "admin-update")
+    else if (act === "upd")
         content = <BodyAdminUpdatePost></BodyAdminUpdatePost>
     else
         content = <BodyAdminDeletePost></BodyAdminDeletePost>

@@ -1,12 +1,19 @@
 import React from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+import {Editor, EditorState, RichUtils, convertToRaw} from 'draft-js'; 
+import './BodyAdminAddPost.css';
 
 function BodyAdminAddPost() {  
     const urlAddPost="http://q-site-server.herokuapp.com/edit/addpost";
-    let title;
-    let category;
-    let content;
+    //let title;
+    //let category;
+    const [editorState, setEditorState] = React.useState(
+        EditorState.createEmpty()
+    );
+    const [title, setTitle] = React.useState();
+    const [category, setCategory] = React.useState();
+    // const [dataState, setEditorState] = React.useState(["","",EditorState.createEmpty()]);
     return (
         <div className="BodyAdminAddPost">
             <div>
@@ -18,12 +25,14 @@ function BodyAdminAddPost() {
                                 <Form.Group controlId="formTitle">
                                     <Form.Label>Title</Form.Label>
                                     <Form.Control type="text" placeholder="Enter title here!" 
-                                        onChange={(evt)=>{title=evt.target.value;}}>
+                                        onChange={(evt) => {
+                                            setTitle(evt.target.value);                                       
+                                        }}>
                                     </Form.Control>                                   
                                 </Form.Group>
                                 <Form.Group controlId="formCategory">
                                     <Form.Label>Category</Form.Label>
-                                    <select className="form-control" onChange={(evt)=>{category=evt.target.value;}}>
+                                    <select className="form-control" onChange={(evt)=>{setCategory(evt.target.value)}}>
                                         <option value="htmlcss">HTML/CSS</option>
                                         <option value="javascript">JAVASCRIPT</option>
                                         <option value="java">JAVA</option>
@@ -34,8 +43,18 @@ function BodyAdminAddPost() {
                                 </Form.Group>
                                 <Form.Group controlId="formContent">
                                     <Form.Label>Content</Form.Label>
-                                    <Form.Control as="textarea" rows="10" onChange={(evt)=>{content=evt.target.value;}}/>
-                                </Form.Group>
+                                    <div className="rich-text">
+                                        <button onClick={_onBoldClick}>B</button>
+                                        <button onClick={_onUnderlineClick}>U</button>
+                                        <button onClick={_onItalicClick}><em>I</em></button>
+                                    </div>
+                                    <div className="editors">
+                                        <Editor                                                                                                                    
+                                            editorState={editorState}
+                                            onChange={setEditorState}                          
+                                        />
+                                    </div>                  
+                                </Form.Group>              
                                 <Button variant="primary" type="button" onClick={sendData}>Submit</Button>
                             </Form>
                         </Col>
@@ -44,8 +63,22 @@ function BodyAdminAddPost() {
             </div>
         </div>
     );
+    function _onBoldClick() {
+        setEditorState(RichUtils.toggleInlineStyle(editorState, 'BOLD'));
+    }
+    function _onItalicClick() {
+        setEditorState(RichUtils.toggleInlineStyle(editorState, 'ITALIC'));
+    }
+    function _onUnderlineClick() {
+        setEditorState(RichUtils.toggleInlineStyle(editorState, 'UNDERLINE'));
+    }
+
+
     function sendData(){
-        axios.post(urlAddPost, {title:title, category:category, content:content})
+        let contentRaw = convertToRaw(editorState.getCurrentContent());
+        let objData = {title:title, category:category, content: JSON.stringify(contentRaw)};
+        console.log("data send: ", objData);
+        axios.post(urlAddPost, objData)
             .then(function (response) {
                 console.log(response);
             })

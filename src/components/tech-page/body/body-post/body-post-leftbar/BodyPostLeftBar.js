@@ -7,7 +7,11 @@ function BodyPostLeftBar(props) {
   return (
     <div className="BodyPostLeftBar">
       {
-        postList.map((item, index) => <BodyPostLeftBarItem key={index} title={item.title} onClickItem={arrEvent[index]}></BodyPostLeftBarItem>)
+        postList.map((item, index) => 
+        <BodyPostLeftBarItem 
+          key={index} title={item.title} 
+          onClickItem={arrEvent[index]}>
+        </BodyPostLeftBarItem>)
       }
     </div>
   );
