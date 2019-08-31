@@ -44,11 +44,11 @@ function BodyAdminAddPost() {
                                 <Form.Group controlId="formContent">
                                     <Form.Label>Content</Form.Label>
                                     <div className="rich-text">
-                                        <button onClick={_onBoldClick}>B</button>
-                                        <button onClick={_onUnderlineClick}>U</button>
-                                        <button onClick={_onItalicClick}><em>I</em></button>
-                                        <button onClick={_onCodeClick}>CODE</button>
-                                        <button onClick={_onToggleCodeClick}>TCODE</button>
+                                        <button className="btn btn-outline-primary" onClick={_onBoldClick}>B</button>
+                                        <button className="btn btn-outline-primary" onClick={_onUnderlineClick}>U</button>
+                                        <button className="btn btn-outline-primary" onClick={_onItalicClick}><em>I</em></button>
+                                        <button className="btn btn-outline-primary" onClick={_onCodeClick}>CODE</button>
+                                        {/* <button className="btn btn-outline-primary" onClick={_onToggleCodeClick}>TCODE</button> */}
                                     </div>
                                     <div className="editors">
                                         <Editor                                                                                                                    
@@ -77,9 +77,9 @@ function BodyAdminAddPost() {
     function _onCodeClick() {
         setEditorState(RichUtils.toggleInlineStyle(editorState, 'CODE'));
     }
-    function _onToggleCodeClick() {
-        setEditorState(RichUtils.toggleCode(editorState));
-    }
+    // function _onToggleCodeClick() {
+    //     setEditorState(RichUtils.toggleCode(editorState));
+    // }
 
 
     function sendData(){
