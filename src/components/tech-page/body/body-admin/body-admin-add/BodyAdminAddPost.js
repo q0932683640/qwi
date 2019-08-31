@@ -47,6 +47,7 @@ function BodyAdminAddPost() {
                                         <button onClick={_onBoldClick}>B</button>
                                         <button onClick={_onUnderlineClick}>U</button>
                                         <button onClick={_onItalicClick}><em>I</em></button>
+                                        <button onClick={_onCodeClick}>CODE</button>
                                     </div>
                                     <div className="editors">
                                         <Editor                                                                                                                    
@@ -71,6 +72,9 @@ function BodyAdminAddPost() {
     }
     function _onUnderlineClick() {
         setEditorState(RichUtils.toggleInlineStyle(editorState, 'UNDERLINE'));
+    }
+    function _onCodeClick() {
+        setEditorState(RichUtils.toggleInlineStyle(editorState, 'CODE'));
     }
 
 
