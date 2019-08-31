@@ -78,7 +78,7 @@ function BodyAdminAddPost() {
         setEditorState(RichUtils.toggleInlineStyle(editorState, 'CODE'));
     }
     function _onToggleCodeClick() {
-        setEditorState(RichUtils.toggleInlineStyle(editorState));
+        setEditorState(RichUtils.toggleCode(editorState));
     }
 
 
