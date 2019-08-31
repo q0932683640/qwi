@@ -44,10 +44,10 @@ function BodyAdminAddPost() {
                                 <Form.Group controlId="formContent">
                                     <Form.Label>Content</Form.Label>
                                     <div className="rich-text">
-                                        <button className="btn btn-outline-primary" onClick={_onBoldClick}>B</button>
-                                        <button className="btn btn-outline-primary" onClick={_onUnderlineClick}>U</button>
-                                        <button className="btn btn-outline-primary" onClick={_onItalicClick}><em>I</em></button>
-                                        <button className="btn btn-outline-primary" onClick={_onCodeClick}>CODE</button>
+                                        <button className="btn btn-outline-warning" onClick={_onBoldClick}>B</button>
+                                        <button className="btn btn-outline-warning" onClick={_onUnderlineClick}>U</button>
+                                        <button className="btn btn-outline-warning" onClick={_onItalicClick}><em>I</em></button>
+                                        <button className="btn btn-outline-warning" onClick={_onCodeClick}>CODE</button>
                                         {/* <button className="btn btn-outline-primary" onClick={_onToggleCodeClick}>TCODE</button> */}
                                     </div>
                                     <div className="editors">
