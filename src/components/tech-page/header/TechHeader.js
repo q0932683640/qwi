@@ -39,12 +39,14 @@ function TechHeader(props) {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <NavDropdown title="SKILL" id="skills-dropdown">
+            <NavDropdown.Item href="#HtmlCss" onClick={methodHtmlCss}>ASEMBLY</NavDropdown.Item>
+            <NavDropdown.Item href="#HtmlCss" onClick={methodHtmlCss}>C/C++</NavDropdown.Item>
             <NavDropdown.Item href="#HtmlCss" onClick={methodHtmlCss}>HTML/CSS</NavDropdown.Item>
             <NavDropdown.Item href="#JavaScript"onClick={methodJavaScript}>JAVASCRIPT</NavDropdown.Item>
             <NavDropdown.Item href="#Java" onClick={methodJava}>JAVA</NavDropdown.Item>
           </NavDropdown>
           <NavDropdown title="FRAMEWORK" id="framework-dropdown">
-            <NavDropdown.Item href="#SpringBoot"onClick={methodSpringBoot}>SPRINGBOOT</NavDropdown.Item>
+            <NavDropdown.Item href="#SpringBoot"onClick={methodSpringBoot}>SPRING</NavDropdown.Item>
             <NavDropdown.Item href="#NodeJS" onClick={methodNodeJS}>NODEJS</NavDropdown.Item>
             <NavDropdown.Item href="#ReactJS" onClick={methodReactJS}>REACTJS</NavDropdown.Item>
           </NavDropdown>
