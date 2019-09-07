@@ -11,7 +11,7 @@ function TechPage() {
   return (
     <div className="App">
       <TechHeader 
-        methodHtmlCss={getCategoryHtmlCss()} 
+        methodHtmlCss={getCategoryHtmlCss} 
         methodJava={getCategoryJava()}
         methodJavaScript={getCategoryJavaScript()}
         methodNodeJS={getCategoryNodeJS()}
@@ -41,9 +41,25 @@ function TechPage() {
     }
   }     
   // Get API
+  // function getCategoryHtmlCss(){
+  //   const url = urlHost + "htmlcss";
+  //   return () => {
+  //   axios.get(url)
+  //   .then(function (response) {
+  //     setPosts(response.data);
+  //     setAct("show");
+  //   })
+  //   .catch(function (error) {
+  //     // handle error
+  //     console.log(error);
+  //   })
+  //   .finally(function () {
+  //     // always executed
+  //   })};
+  // }
   function getCategoryHtmlCss(){
     const url = urlHost + "htmlcss";
-    return () => {
+    
     axios.get(url)
     .then(function (response) {
       setPosts(response.data);
@@ -55,7 +71,7 @@ function TechPage() {
     })
     .finally(function () {
       // always executed
-    })};
+    });
   }
   function getCategoryJava(){
     const url = urlHost+ "java";
