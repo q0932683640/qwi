@@ -1,0 +1,8 @@
+li{
+    padding: 0px 10px;
+}
+li:hover {
+    /* color: #ea3509; */
+    color: red;
+    cursor: pointer;
+}

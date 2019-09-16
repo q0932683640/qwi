@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.BodyPostLeftBarItem{
+    padding: 5px 5px;
+    text-align: center
+}
+.BodyPostLeftBarItem:hover {
+    cursor: pointer;
+    background: #fff;
+    border-radius: 5px;
+    color: rgba(202, 102, 20, 0.8);  
+    transition: 0.5s;
+}
+Col>div{
+    font-size: 22px;
+}

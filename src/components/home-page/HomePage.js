@@ -1,6 +1,5 @@
 import React from 'react';
-import './HomePage.css';
-import TechPage from '../tech-page/TechPage';
+import TechPage from './tech-page/TechPage';
 
 function HomePage() { 
   return (
