@@ -21,8 +21,10 @@ function TechHeader(props) {
               <div className="d-flex">
                 <div style={{width:"50%", paddingLeft:"30px"}}>
                   <span><img alt="Logo!" src={logo} width="70px" height="auto"/></span>
-                  <span style={{color:"red"}}>T</span>
-                  <span>echtut</span>
+                  <span style={{fontFamily:'Digital'}}>
+                    <span style={{color:"red"}}>T</span>
+                    <span>echtut</span> 
+                  </span>                  
                 </div>
                 <div className="d-flex justify-content-end" style={{fontSize:"20px", width:"50%", paddingRight:"30px"}}>Login</div>
               </div>

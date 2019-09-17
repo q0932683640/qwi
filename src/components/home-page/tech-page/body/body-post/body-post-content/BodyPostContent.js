@@ -15,7 +15,7 @@ function Content() {
     title = post.title;
     editorState = EditorState.createWithContent(convertFromRaw(JSON.parse(post.content)));
     content= <div>            
-                <div>
+                <div style={styles.title}>
                   <h2>{title}</h2>
                   <div></div>               
                 </div>
@@ -37,14 +37,16 @@ function Content() {
 const styles = {
   body: {
     backgroundColor: "#fff",
-    padding: "50px 70px"
+    padding: "0px 50px"
+  },
+  title: {
+    padding: "10px 0"
   },
   author: {
     paddingTop: "30px",
     paddingRight: "50px",
     display: "flex",
     justifyContent: "flex-end"
-
   }
 }
 export default Content;
