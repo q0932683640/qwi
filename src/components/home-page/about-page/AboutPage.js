@@ -34,8 +34,8 @@ function AboutPage(){
                             <Nav.Link className="navLink" href="Experience">Experience</Nav.Link>
                             <Nav.Link className="navLink" href="My Team">My Team</Nav.Link>
                             <Nav.Link className="navLink" href="Contact">Contact</Nav.Link>
-                            <Nav.Link className="navLink" href="Contact"><a href="http://10.88.136.52:8443/login">Login</a></Nav.Link>
-                            <Nav.Link className="navLink" href="Contact"><a href="http://10.88.136.52:8443/upload">upfile</a></Nav.Link>
+                            {/* <Nav.Link className="navLink" href="Contact"><a href="http://10.88.136.52:8443/login">Login</a></Nav.Link>
+                            <Nav.Link className="navLink" href="Contact"><a href="http://10.88.136.52:8443/upload">upfile</a></Nav.Link> */}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>                
