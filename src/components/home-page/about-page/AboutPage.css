@@ -1,0 +1,107 @@
+
+#AboutPage{
+    background-color:#020312;
+    color : #e0e0e0;
+    font-family: Saira , sans-serif, Arial, Helvetica;
+}
+.navbarMenu{
+    background-color: rgba(2, 3, 18, 1) !important;
+}
+.navLink {
+    color : #e0e0e0 !important;
+}
+.navLink:hover {
+    color: #EA3509 !important;
+}
+.colorOrange {
+    color: #EA3509;
+}
+.home{
+    width: 100%;
+    height: 1080px;
+    background-image: url('./images/ca2.jpg');
+    background-size: cover;
+}
+.home div {
+    background-color: rgba(2, 3, 18, .8);
+    padding: 20px 10px;
+    text-align: center;
+    border-radius: 10px;
+    position: absolute;
+    width: 300px;
+    height: auto;
+    top: 40%;
+    left: 20%;
+}
+
+.buttonOrange {
+    background-color: #EA3509;
+    border: 1px solid #EA3509;
+    padding: 8px 8px;
+    border-radius: 5px;
+}
+.buttonOrange:hover {
+    background: transparent;
+    color: #EA3509;
+}
+.aboutMe {
+    padding-top: 50px;
+}
+.aboutMe button {
+    margin-top: 30px;
+}
+.servicesFontAwesome {
+    font-size: 40px;
+    color: #EA3509;
+    padding-bottom: 5px;
+}
+
+.sCard {
+    border: 1px solid #07081f !important;
+    margin: 10px 0;
+    color: #e0e0e0;
+}
+.sCardBody {
+    background: #07081f;
+    padding-bottom: 10px;
+}
+.sCard:hover {
+    box-shadow:5px 5px 0px #EA3509;
+    cursor: pointer;
+}
+.pofolio .sCard{
+    color: #020312;
+}
+.expCard{
+    border: 1px solid #07081f !important;
+    margin: 10px 0;
+    color: #e0e0e0;
+}
+.expCardBody{
+    background: #07081f;
+    padding-bottom: 10px;
+}
+.expProgressBar {
+    background-color: #EA3509 !important;
+}
+.gitFontAwesome{
+    font-size: 20px;
+    color: #EA3509 !important;
+}
+.gitFontFacebook {
+    font-size: 20px;
+    color: #3B579D;
+}
+.gitFontYoutube {
+    font-size: 20px;
+    color: #ff0000;
+}
+.gitFontTwitter {
+    font-size: 20px;
+    color: #28AAE1;
+}
+.gitFontFacebook:hover, .gitFontTwitter:hover, .gitFontYoutube:hover {
+    color: #EA3509;
+    cursor: pointer;
+    font-size: 20px;
+}
