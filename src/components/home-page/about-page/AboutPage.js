@@ -1,5 +1,5 @@
-import React from "react";
-import { Navbar, Container, Row, Image, Nav, Button, Col, Card, Form, ProgressBar} from "react-bootstrap";
+import React, {useRef, useState} from "react";
+import { Navbar, Container, Row, Image, Nav, Button, Col, Card, Form, ProgressBar, InputGroup} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faFirefox, faYoutube, faTwitter} from '@fortawesome/free-brands-svg-icons';
 import { faMobileAlt, faMicrochip, faMapMarkedAlt, faPhoneVolume, faEnvelope} from '@fortawesome/free-solid-svg-icons';
@@ -10,11 +10,26 @@ import team2 from "./images/team2.jpg";
 import team3 from "./images/team3.png";
 import sFactory from "./images/sFactory.jpg";
 import "./AboutPage.css";
-import axios from "axios";
+
 function AboutPage(){
-    const aboutRef = React.useRef(null);
-    const portfolioRef = React.useRef(null);
-    // useMountEffect(() => scrollToRef(myRef))
+    const homeRef = useRef(null);
+    const aboutRef = useRef(null);
+    const serviceRef = useRef(null);
+    const portfolioRef = useRef(null);
+    const experienceRef = useRef(null);
+    const teamRef = useRef(null);
+    const contactRef = useRef(null);
+
+    const [validated, setValidated] = useState(false);
+    const handleSubmit = event => {
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        setValidated(true);
+    };
+    
     const thai="http://10.88.136.52:8443/downloadFile/CV_ThaiPQ5_Java.doc";
     const quynh="http://10.88.136.52:8443/downloadFile/CV_QuynhPV_Java.doc";
     const binh="http://10.88.136.52:8443/downloadFile/CV_QuynhPV_Java.doc";
@@ -27,21 +42,38 @@ function AboutPage(){
                     <Navbar.Toggle aria-controls="navMenu" style={{backgroundColor:"#e0e0e0"}}></Navbar.Toggle>
                     <Navbar.Collapse id="navMenu">
                         <Nav className="ml-auto text-center">
-                            <Nav.Link className="navLink" href="Home">Home</Nav.Link>
-                            <Nav.Link className="navLink" href="About Me">About Me</Nav.Link>
-                            <Nav.Link className="navLink" href="Service">Service</Nav.Link>
-                            <Nav.Link className="navLink" href="Portfolio" onClick={scrollToRef}>Portfolio</Nav.Link>
-                            <Nav.Link className="navLink" href="Experience">Experience</Nav.Link>
-                            <Nav.Link className="navLink" href="My Team">My Team</Nav.Link>
-                            <Nav.Link className="navLink" href="Contact">Contact</Nav.Link>
-                            {/* <Nav.Link className="navLink" href="Contact"><a href="http://10.88.136.52:8443/login">Login</a></Nav.Link>
-                            <Nav.Link className="navLink" href="Contact"><a href="http://10.88.136.52:8443/upload">upfile</a></Nav.Link> */}
+                            <Nav.Link className="navLink" href="#" onClick={()=>
+                                    window.scrollTo({top:homeRef.current.offsetTop - 75, behavior:"smooth"})
+                                }>Home</Nav.Link>
+                            <Nav.Link className="navLink" href="#" onClick={()=>
+                                    window.scrollTo({top:aboutRef.current.offsetTop - 75, behavior:"smooth"})
+                                }>About Me</Nav.Link>
+                            <Nav.Link className="navLink" href="#" onClick={()=>
+                                    window.scrollTo({top:serviceRef.current.offsetTop - 75, behavior:"smooth"})
+                                }>Service</Nav.Link>
+                            <Nav.Link className="navLink" href="#"
+                                onClick={()=>
+                                    window.scrollTo({top:portfolioRef.current.offsetTop - 75, behavior:"smooth"})
+                                }>
+                                Portfolio
+                            </Nav.Link>
+                            <Nav.Link className="navLink" href="#" onClick={()=>
+                                    window.scrollTo({top:experienceRef.current.offsetTop - 75, behavior:"smooth"})
+                                }>Experience</Nav.Link>
+                            <Nav.Link className="navLink" href="#" onClick={()=>
+                                    window.scrollTo({top:teamRef.current.offsetTop - 75, behavior:"smooth"})
+                                }>My Team</Nav.Link>
+                            <Nav.Link className="navLink" href="#" onClick={()=>
+                                    window.scrollTo({top:contactRef.current.offsetTop - 75, behavior:"smooth"})
+                                }>Contact</Nav.Link>
+                            <Nav.Link className="navLink" href="Contact"><a href="http://10.88.136.52:8443/login">Login</a></Nav.Link>
+                            <Nav.Link className="navLink" href="Contact"><a href="http://10.88.136.52:8443/upload">upfile</a></Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>                
             </Navbar>        
-            {/* home            */}
-            <Container fluid="true" className="home"> 
+            {/* home */}
+            <Container ref={homeRef} fluid="true" className="home"> 
                 <div>
                     <h1 className="colorOrange">We are the world!</h1>
                     <p className="colorOrange">
@@ -52,7 +84,7 @@ function AboutPage(){
             </Container>
 
             {/* about Me */}
-            <Container className="aboutMe mt-5">
+            <Container ref={aboutRef} className="aboutMe mt-5">
                 <Row>
                     <Col md={4}>
                         <Image src={me} fluid="true"></Image>
@@ -93,7 +125,7 @@ function AboutPage(){
                 </Row>
             </Container>
             {/* service */}
-            <Container className="services mt-5 mb-5">
+            <Container ref={serviceRef} className="services mt-5 mb-5">
                 <h4 className="colorOrange"> - Services - </h4>
                 <h2>MY SERVICES</h2>
                 <Row style={{color:"black"}}>
@@ -150,7 +182,7 @@ function AboutPage(){
             </Container>
 
             {/* experience */}
-            <Container className="mt-5 mb-5">
+            <Container ref={experienceRef} className="mt-5 mb-5">
                 <h4 className="colorOrange">-RESUME-</h4>
                 <h2>WORKING EXPERIENCE</h2>
                 <Row style={{color:"black"}}>
@@ -230,7 +262,7 @@ function AboutPage(){
             </Container>
             
             {/* team */}
-            <Container className="mt-5 mb-5">            
+            <Container ref={teamRef} className="mt-5 mb-5">            
                 <h4 className="colorOrange">-Team-</h4>
                 <h2>CREATIVE TEAM</h2>
                 <Row style={{color:"black"}} className="mt-3">
@@ -284,8 +316,8 @@ function AboutPage(){
                     </Col>              
                 </Row>
             </Container>
-            {/* get in touch */}
-            <Container className="mt-3">
+            {/* contact */}
+            <Container ref={contactRef} className="mt-3">
                 <h4 className="colorOrange">-Contact-</h4>
                 <h2>Get In Touch</h2>               
                 <Row className="pt-5">
@@ -301,23 +333,32 @@ function AboutPage(){
                         </div>                                       
                     </Col>
                     <Col md={8}>
-                        <Form>
+                        <Form noValidate validated={validated} onSubmit={handleSubmit}>
                             <Form.Group>
                                 <Form.Label>Your Name: </Form.Label>
-                                <Form.Control type="text" placeholder="Enter your name"/>
+                                <InputGroup>
+                                    <Form.Control type="text" placeholder="Enter your name" required/>
+                                    <Form.Control.Feedback type="invalid">Your name is not valid!</Form.Control.Feedback>
+                                </InputGroup>                            
                             </Form.Group>  
                             <Form.Group>
                                 <Form.Label>Your Email: </Form.Label>
-                                <Form.Control type="text" placeholder="Enter your email" />
+                                <InputGroup>
+                                    <Form.Control type="email" placeholder="Enter your email" required/>
+                                    <Form.Control.Feedback type="invalid">Your email is not valid!</Form.Control.Feedback>
+                                </InputGroup>
                                 <Form.Text className="text-muted">
                                     We'll never share your email with anyone else.
                                 </Form.Text>
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>Your messages here</Form.Label>
-                                <Form.Control as="textarea" rows="3" />
+                                <InputGroup>
+                                    <Form.Control as="textarea" rows="3" placeholder="Enter your message" required/>
+                                    <Form.Control.Feedback type="invalid">Your messages is not valid!</Form.Control.Feedback>
+                                </InputGroup>                             
                             </Form.Group>
-                            <Button>Submit</Button>
+                            <Button type="submit">Submit</Button>
                         </Form>
                     </Col>
                 </Row>
@@ -342,7 +383,4 @@ function AboutPage(){
     );
 }
 
-function scrollToRef(ref){
-    window.scrollTo(0, ref.current.offsetTop);
-}
 export default AboutPage;
