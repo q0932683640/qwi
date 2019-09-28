@@ -1,0 +1,49 @@
+.register{
+    background-image: url('../images/bg.jpg'); 
+    font-family: 'Saira' , sans-serif, Arial, Helvetica;
+    min-height: 1080px;
+}
+.cRegister {
+    padding-top: 150px;
+}
+.form {
+    color: #e0e0e0;
+    padding: 30px 30px;
+    background-color: rgba(31, 80, 85, 0.5);
+    border-radius: 10px;
+}
+.get-login span {
+    color: rgb(45, 190, 76);
+}
+.get-login span:hover {
+    color: rgb(18, 128, 42);
+    cursor: pointer;
+}
+.loginBtn {
+    background-color:rgb(45, 190, 76) !important;
+    border: rgb(45, 190, 76) !important;
+    margin: 0 5px;
+}
+.cancelBtn {
+    background: transparent !important;
+}
+.loginBtn:hover {
+    background-color:rgb(18, 128, 42) !important;
+    border: rgb(18, 128, 42) !important;
+}
+.fontFacebook {
+    font-size: 20px;
+    color:rgb(52, 120, 221);
+}
+.fontTwitter {
+    font-size: 20px;
+    color: #28AAE1;
+}
+.fontGoogle {
+    font-size: 20px;
+    color: rgb(158, 78, 72);
+}
+.fontGoogle:hover, .fontTwitter:hover, .fontFacebook:hover {
+    color: rgb(18, 128, 42);
+    cursor: pointer;
+}

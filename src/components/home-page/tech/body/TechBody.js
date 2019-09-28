@@ -5,7 +5,7 @@ function TechBody(props) {
   return (
     <div style={styles.body}>   
       {
-        <BodyPost></BodyPost>
+        // <BodyPost></BodyPost>
       }
     </div>
   );

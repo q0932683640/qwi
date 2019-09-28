@@ -1,5 +1,7 @@
 import React, {useRef, useState} from "react";
-import { Navbar, Container, Row, Image, Nav, Button, Col, Card, Form, ProgressBar, InputGroup} from "react-bootstrap";
+import {useDispatch} from "react-redux";
+import actionCreator from "../../../redux/actionCreator";
+import { Navbar, Container, Row, Image, Nav, Button, Col, Card, Form, ProgressBar, InputGroup, Dropdown} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faFirefox, faYoutube, faTwitter} from '@fortawesome/free-brands-svg-icons';
 import { faMobileAlt, faMicrochip, faMapMarkedAlt, faPhoneVolume, faEnvelope} from '@fortawesome/free-solid-svg-icons';
@@ -9,9 +11,13 @@ import team1 from "./images/team1.jpg";
 import team2 from "./images/team2.jpg";
 import team3 from "./images/team3.png";
 import sFactory from "./images/sFactory.jpg";
-import "./AboutPage.css";
+import "./IntroPage.css";
 
-function AboutPage(){
+
+function IntroPage(){
+    const dispatch = useDispatch();
+
+    //scroll window to the component from menu link
     const homeRef = useRef(null);
     const aboutRef = useRef(null);
     const serviceRef = useRef(null);
@@ -20,6 +26,15 @@ function AboutPage(){
     const teamRef = useRef(null);
     const contactRef = useRef(null);
 
+    const showTech = () => {
+        dispatch(actionCreator("techShow"));
+        dispatch(actionCreator("introHide"));
+    }
+    const showLogin = () => {
+        dispatch(actionCreator("introHide"));   
+        dispatch(actionCreator("authLogin")); 
+    }
+    //validate form message
     const [validated, setValidated] = useState(false);
     const handleSubmit = event => {
         const form = event.currentTarget;
@@ -29,16 +44,17 @@ function AboutPage(){
         }
         setValidated(true);
     };
-    
+    //link file download cv.
     const thai="http://10.88.136.52:8443/downloadFile/CV_ThaiPQ5_Java.doc";
     const quynh="http://10.88.136.52:8443/downloadFile/CV_QuynhPV_Java.doc";
     const binh="http://10.88.136.52:8443/downloadFile/CV_QuynhPV_Java.doc";
+
     return (
-        <div id="AboutPage">
+        <div id="IntroPage">
             {/* navbar */}
             <Navbar fixed="top" expand="md" className="navbarMenu">
                 <Container>
-                    <Navbar.Brand href="#home"><Image src={logo} rounded/></Navbar.Brand>
+                    <Navbar.Brand href="#home"><Image src={logo} rounded width="50px" height="50px"/></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navMenu" style={{backgroundColor:"#e0e0e0"}}></Navbar.Toggle>
                     <Navbar.Collapse id="navMenu">
                         <Nav className="ml-auto text-center">
@@ -57,7 +73,7 @@ function AboutPage(){
                                 }>
                                 Portfolio
                             </Nav.Link>
-                            <Nav.Link className="navLink" href="#" onClick={()=>
+                            <Nav.Link className="navLink" onClick={()=>
                                     window.scrollTo({top:experienceRef.current.offsetTop - 75, behavior:"smooth"})
                                 }>Experience</Nav.Link>
                             <Nav.Link className="navLink" href="#" onClick={()=>
@@ -66,10 +82,11 @@ function AboutPage(){
                             <Nav.Link className="navLink" href="#" onClick={()=>
                                     window.scrollTo({top:contactRef.current.offsetTop - 75, behavior:"smooth"})
                                 }>Contact</Nav.Link>
-                            <Nav.Link className="navLink" href="Contact"><a href="http://10.88.136.52:8443/login">Login</a></Nav.Link>
-                            <Nav.Link className="navLink" href="Contact"><a href="http://10.88.136.52:8443/upload">upfile</a></Nav.Link>
+                            <Nav.Link className="navLink" onClick={showLogin}>Login</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
+                    {/* test */}
+                   
                 </Container>                
             </Navbar>        
             {/* home */}
@@ -79,7 +96,7 @@ function AboutPage(){
                     <p className="colorOrange">
                                Visit TECHTUT website?
                     </p>
-                    <button className="buttonOrange">LET'S GO!</button>                
+                    <button className="buttonOrange" onClick={showTech}>LET'S GO!</button>                
                 </div>                     
             </Container>
 
@@ -275,9 +292,9 @@ function AboutPage(){
                                     <div style={{fontSize:".8em"}}>Front-End Developer</div>
                                 </Card.Title>
                                 <Card.Text>                                   
-                                    <div>3 years experience in front-end! </div>
-                                    <div>Master in Bootstrap, Angular...</div>                               
-                                </Card.Text>
+                                    1 years experience in front-end!<br/>
+                                    Master in Bootstrap, Angular...                               
+                                </Card.Text>                                
                                 <button type="button" className="buttonOrange"><a style={{color:"black", textDecoration:"none"}} href={binh}>Download CV</a></button> 
                             </Card.Body>
                         </Card>
@@ -291,8 +308,8 @@ function AboutPage(){
                                     <div style={{fontSize:".8em"}}>Fullstack JS Dev</div>
                                 </Card.Title>
                                 <Card.Text>
-                                    <div>1 years of experience! </div>
-                                    <div>Master in NodeJS, React JS ...</div>
+                                   1 years of experience! <br/>
+                                    Master in NodeJS, React JS ...
                                 </Card.Text>                               
                                 <button type="button" className="buttonOrange"><a style={{color:"black", textDecoration:"none"}} href={quynh}>Download CV</a></button> 
                             </Card.Body>
@@ -307,8 +324,8 @@ function AboutPage(){
                                     <div style={{fontSize:".8em"}}>Java Developer</div>
                                 </Card.Title>
                                 <Card.Text>                                  
-                                    <div>2 years of experience! </div>
-                                    <div>Master in Spring and Android...</div>               
+                                    1 years of experience! <br/>
+                                    Master in Spring and Android...            
                                 </Card.Text>
                                 <button type="button" className="buttonOrange"><a style={{color:"black", textDecoration:"none"}} href={thai}>Download CV</a></button>                                           
                             </Card.Body>
@@ -383,4 +400,4 @@ function AboutPage(){
     );
 }
 
-export default AboutPage;
+export default IntroPage;

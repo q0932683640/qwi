@@ -1,0 +1,49 @@
+.login{
+    background-image: url('../images/bg.jpg'); 
+    font-family: 'Saira' , sans-serif, Arial, Helvetica;
+    min-height: 1080px;
+}
+.cLogin {
+    padding-top: 150px;
+}
+.form {
+    color: #e0e0e0;
+    padding: 30px 30px;
+    background-color: rgba(31, 80, 85, 0.7);
+    border-radius: 10px;
+}
+.form a {
+    color: rgb(45, 190, 76);
+}
+.form a:hover {
+    color: rgb(18, 128, 42);
+    text-decoration: none;
+}
+.loginBtn {
+    background-color:rgb(45, 190, 76) !important;
+    border: rgb(45, 190, 76) !important;
+    margin: 0 5px;
+}
+.cancelBtn {
+    background: transparent !important;
+}
+.loginBtn:hover {
+    background-color:rgb(18, 128, 42) !important;
+    border: rgb(18, 128, 42) !important;
+}
+.fontFacebook {
+    font-size: 20px;
+    color:rgb(52, 120, 221);
+}
+.fontTwitter {
+    font-size: 20px;
+    color: #28AAE1;
+}
+.fontGoogle {
+    font-size: 20px;
+    color: rgb(158, 78, 72);
+}
+.fontGoogle:hover, .fontTwitter:hover, .fontFacebook:hover {
+    color: rgb(18, 128, 42);
+    cursor: pointer;
+}
