@@ -1,25 +1,19 @@
 import React from 'react';
 import TechPage from './tech/TechPage';
 import IntroPage from './intro/IntroPage';
-import AuthPage from './auth/AuthPage';
-import {useSelector} from "react-redux";
-function HomePage() { 
-
-  const state = useSelector(state => state);
-  let content;
-  
-  if(state.introReducer.show)
-    content = <IntroPage></IntroPage>;
-  else if (state.authReducer.show)
-    content = <AuthPage></AuthPage>;
-  else if (state.techReducer.show)
-    content = <TechPage></TechPage>;
-  else return;
-
+import AdminPage from './admin/AdminPage';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+function HomePage(props) { 
   return (
-    <div className="HomePage">
-      {content}
-    </div>
+    <Router>
+      <div className="HomePage">
+        <Switch>
+          <Route path="/" exact component={IntroPage}></Route> 
+          <Route path="/admin" component={AdminPage}></Route>
+          <Route path="/techtut" component={TechPage}></Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 export default HomePage;

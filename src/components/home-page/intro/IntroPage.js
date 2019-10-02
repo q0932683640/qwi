@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
 import {useDispatch} from "react-redux";
 import actionCreator from "../../../redux/actionCreator";
-import { Navbar, Container, Row, Image, Nav, Button, Col, Card, Form, ProgressBar, InputGroup, Dropdown} from "react-bootstrap";
+import { Navbar, Container, Row, Image, Nav, Button, Col, Card, Form, ProgressBar, InputGroup} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faFirefox, faYoutube, faTwitter} from '@fortawesome/free-brands-svg-icons';
 import { faMobileAlt, faMicrochip, faMapMarkedAlt, faPhoneVolume, faEnvelope} from '@fortawesome/free-solid-svg-icons';
@@ -12,11 +12,18 @@ import team2 from "./images/team2.jpg";
 import team3 from "./images/team3.png";
 import sFactory from "./images/sFactory.jpg";
 import "./IntroPage.css";
+import ModalDetail from "./details/ModalDetail";
+import {webAppData, mobileAppData, iotAppData, sFactoryData} from "./common/DetailData";
+// import axios from "axios";
+import {NavLink} from "react-router-dom";
+import FormikForm from "./details/MessageForm";
 
+function IntroPage({match}){
 
-function IntroPage(){
-    const dispatch = useDispatch();
-
+    const [webState, setWebState] = useState(false);
+    const [mobileState, setMobileState] = useState(false);
+    const [iotState, setIOTState] = useState(false);
+    const [sFactoryState, setSFactoryState] = useState(false);
     //scroll window to the component from menu link
     const homeRef = useRef(null);
     const aboutRef = useRef(null);
@@ -26,29 +33,40 @@ function IntroPage(){
     const teamRef = useRef(null);
     const contactRef = useRef(null);
 
-    const showTech = () => {
-        dispatch(actionCreator("techShow"));
-        dispatch(actionCreator("introHide"));
-    }
-    const showLogin = () => {
-        dispatch(actionCreator("introHide"));   
-        dispatch(actionCreator("authLogin")); 
-    }
     //validate form message
-    const [validated, setValidated] = useState(false);
-    const handleSubmit = event => {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        setValidated(true);
-    };
+    // const [validated, setValidated] = useState(false);
+    // const handleSubmit = event => {
+    //     const form = event.currentTarget;
+    //     if (form.checkValidity() === false) {
+    //         event.preventDefault();
+    //         event.stopPropagation();
+    //     }
+    //     else {
+    //         axios.post('http://localhost:5000/messages/add', {
+    //             username: form.mesUsername.value,
+    //             email: form.mesEmail.value,
+    //             content: form.mesContent.value                
+    //         })
+    //         .then(function (response) {
+    //             if(response.data.username === form.mesUsername.value) 
+    //                 alert("Send message success!");
+    //             else
+    //                 alert("Insert fail!");
+    //         })
+    //         .catch(function (error) {
+    //             alert('Connection is getting trouble!');
+    //             console.log(error);
+    //         }); 
+    //     }
+    //     setValidated(true);       
+    // };
     //link file download cv.
-    const thai="http://10.88.136.52:8443/downloadFile/CV_ThaiPQ5_Java.doc";
-    const quynh="http://10.88.136.52:8443/downloadFile/CV_QuynhPV_Java.doc";
-    const binh="http://10.88.136.52:8443/downloadFile/CV_QuynhPV_Java.doc";
-
+    const thai="http://localhost:5000/cv/CV_QuynhPV_FrontEnd.doc";
+    const quynh="http://localhost:5000/cv/CV_QuynhPV_FrontEnd.doc";
+    const binh="http://localhost:5000/cv/CV_QuynhPV_FrontEnd.doc";
+    //
+    const winHeight = window.screen.height;
+    console.log(winHeight);
     return (
         <div id="IntroPage">
             {/* navbar */}
@@ -81,8 +99,7 @@ function IntroPage(){
                                 }>My Team</Nav.Link>
                             <Nav.Link className="navLink" href="#" onClick={()=>
                                     window.scrollTo({top:contactRef.current.offsetTop - 75, behavior:"smooth"})
-                                }>Contact</Nav.Link>
-                            <Nav.Link className="navLink" onClick={showLogin}>Login</Nav.Link>
+                                }>Contact</Nav.Link>                           
                         </Nav>
                     </Navbar.Collapse>
                     {/* test */}
@@ -90,15 +107,23 @@ function IntroPage(){
                 </Container>                
             </Navbar>        
             {/* home */}
-            <Container ref={homeRef} fluid="true" className="home"> 
-                <div>
-                    <h1 className="colorOrange">We are the world!</h1>
-                    <p className="colorOrange">
-                               Visit TECHTUT website?
-                    </p>
-                    <button className="buttonOrange" onClick={showTech}>LET'S GO!</button>                
-                </div>                     
-            </Container>
+            <section className="home">
+                <Container ref={homeRef} className="d-flex flex-column justify-content-center" style={{minHeight:"1080px"}}>
+                    <Row>                      
+                        <Col md={5} lg={4} className="d-flex justify-content-center" >
+                            <div className="home-techtut">
+                                <h1 className="colorOrange">We are the world!</h1>
+                                <p className="colorOrange">
+                                        Visit TECHTUT website?
+                                </p>  
+                                <NavLink style={{textDecoration:"none", color:"#020312"}} className="buttonOrange" to={`${match.url}techtut`}>Let's Go</NavLink> 
+                                {/* <NavLink style={{textDecoration:"none", color:"#020312"}} className="buttonOrange" to={`admin/dashboard`}>Let's Go</NavLink> */}
+                            </div> 
+                        </Col>
+                        <Col md={7} lg={8}></Col>
+                    </Row>                     
+                </Container>
+            </section>
 
             {/* about Me */}
             <Container ref={aboutRef} className="aboutMe mt-5">
@@ -123,17 +148,19 @@ function IntroPage(){
                                 photos and playing and watching sports.
                             </p>
                         </div>
-                        <Row>
-                            <Col md={6}>
+                        <Row className="pl-3 pr-3">
+                            <Col md={6} className="pt-2">                              
                                 <div>Name: Phung Van Quynh</div>
                                 <div>Birthday: 11.07.1990</div>
-                                <div>From: HCM, Viet Nam</div>                              
+                                <div>From: HCM, Viet Nam</div>                                
                             </Col>
-                            <Col md={6}>
+                            <Col md={6} className="pt-2">                          
                                 <div>Interest: Game & Girls</div>
                                 <div>Phone: 0932.683.640</div>
-                                <div>Email: quynhpub90@gmail.com</div>
-                            </Col>
+                                <div>Email: quynhpub90@gmail.com</div>                             
+                            </Col>                         
+                        </Row>
+                        <Row>
                             <Col md={12}>
                                 <button type="button" className="buttonOrange"><a style={{color:"#e0e0e0", textDecoration:"none"}} href={quynh}>Download CV</a></button> 
                             </Col>
@@ -146,7 +173,7 @@ function IntroPage(){
                 <h4 className="colorOrange"> - Services - </h4>
                 <h2>MY SERVICES</h2>
                 <Row style={{color:"black"}}>
-                    <Col md={4}>
+                    <Col md={4}  onClick={()=>setWebState(true)}>
                         <Card className="sCard">                  
                             <Card.Body className="sCardBody">
                                 <FontAwesomeIcon icon={faFirefox}  className="servicesFontAwesome"/> 
@@ -155,9 +182,10 @@ function IntroPage(){
                                     I have the strong base in Website Application MVC and RestAPI technology.
                                 </Card.Text>
                             </Card.Body>
-                        </Card>
+                        </Card>                        
                     </Col>
-                    <Col md={4}>
+                    <ModalDetail show={webState} onHide={()=>{setWebState(false)}} data={webAppData}></ModalDetail>
+                    <Col md={4} onClick={()=>setMobileState(true)}>
                         <Card className="sCard">                  
                             <Card.Body className="sCardBody">
                                 <FontAwesomeIcon icon={faMobileAlt}  className="servicesFontAwesome"/> 
@@ -168,17 +196,19 @@ function IntroPage(){
                             </Card.Body>
                         </Card>
                     </Col>
-                    <Col md={4}>
+                    <ModalDetail show={mobileState} onHide={()=>{setMobileState(false)}} data={mobileAppData}></ModalDetail>
+                    <Col md={4} onClick={()=>setIOTState(true)}>
                         <Card className="sCard">                  
                             <Card.Body className="sCardBody">
                                 <FontAwesomeIcon icon={faMicrochip}  className="servicesFontAwesome"/> 
                                 <Card.Title>IOT EMBEDDED</Card.Title>
                                 <Card.Text>
-                                    I have 4 years of experience in develop IOT devices with C/C++
+                                    I have 3 months of experience in develop IOT devices with C/C++, JavaScript.
                                 </Card.Text>
                             </Card.Body>
                         </Card>
-                    </Col>           
+                    </Col> 
+                    <ModalDetail show={iotState} onHide={()=>{setIOTState(false)}} data={iotAppData}></ModalDetail>          
                 </Row>
             </Container>
             {/* portfolio */}
@@ -186,7 +216,7 @@ function IntroPage(){
             <h4 className="colorOrange">- Portfolio -</h4>
             <h2>AWESOME WORKS</h2>
             <Row>
-                <Col sm={6} md={4}>
+                <Col sm={6} md={4} onClick={()=>setSFactoryState(true)}>
                     <Card className="sCard">
                         <Card.Img variant="top" src={sFactory} />
                         <Card.Body>
@@ -194,7 +224,8 @@ function IntroPage(){
                             <Card.Text>We build the Smart Factory Project in 6 weeks with Spring boot, Postgree and Angular 8.</Card.Text>                          
                         </Card.Body>
                     </Card>
-                </Col>       
+                </Col>
+                <ModalDetail show={sFactoryState} onHide={()=>{setSFactoryState(false)}} data={sFactoryData}></ModalDetail>       
             </Row>
             </Container>
 
@@ -338,7 +369,7 @@ function IntroPage(){
                 <h4 className="colorOrange">-Contact-</h4>
                 <h2>Get In Touch</h2>               
                 <Row className="pt-5">
-                    <Col md={4} className="mt-3">
+                    <Col md={4} className="pt-2 pb-3">
                         <div>
                             <p><FontAwesomeIcon className="gitFontAwesome" icon={faMapMarkedAlt}></FontAwesomeIcon><span className="pl-3">District 9, HCM City.</span></p>
                         </div>
@@ -350,15 +381,15 @@ function IntroPage(){
                         </div>                                       
                     </Col>
                     <Col md={8}>
-                        <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                            <Form.Group>
+                        {/* <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                            <Form.Group controlId="mesUsername">
                                 <Form.Label>Your Name: </Form.Label>
                                 <InputGroup>
                                     <Form.Control type="text" placeholder="Enter your name" required/>
                                     <Form.Control.Feedback type="invalid">Your name is not valid!</Form.Control.Feedback>
                                 </InputGroup>                            
                             </Form.Group>  
-                            <Form.Group>
+                            <Form.Group controlId="mesEmail">
                                 <Form.Label>Your Email: </Form.Label>
                                 <InputGroup>
                                     <Form.Control type="email" placeholder="Enter your email" required/>
@@ -368,15 +399,18 @@ function IntroPage(){
                                     We'll never share your email with anyone else.
                                 </Form.Text>
                             </Form.Group>
-                            <Form.Group>
+                            <Form.Group controlId="mesContent">
                                 <Form.Label>Your messages here</Form.Label>
                                 <InputGroup>
                                     <Form.Control as="textarea" rows="3" placeholder="Enter your message" required/>
                                     <Form.Control.Feedback type="invalid">Your messages is not valid!</Form.Control.Feedback>
                                 </InputGroup>                             
                             </Form.Group>
-                            <Button type="submit">Submit</Button>
-                        </Form>
+                            <Form.Group>
+                                <Button type="submit">Submit</Button>
+                            </Form.Group>
+                        </Form> */}
+                        <FormikForm></FormikForm>
                     </Col>
                 </Row>
             </Container>
