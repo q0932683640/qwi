@@ -25,8 +25,7 @@ function TechHeader(props) {
                     <span style={{color:"red"}}>T</span>
                     <span>echtut</span> 
                   </span>                  
-                </div>
-                <div className="d-flex justify-content-end" style={{fontSize:"20px", width:"50%", paddingRight:"30px"}}>Login</div>
+                </div>               
               </div>
             </Col>
           </Row>
