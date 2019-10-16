@@ -1,7 +1,5 @@
 import React, {useRef, useState} from "react";
-import {useDispatch} from "react-redux";
-import actionCreator from "../../../redux/actionCreator";
-import { Navbar, Container, Row, Image, Nav, Button, Col, Card, Form, ProgressBar, InputGroup} from "react-bootstrap";
+import { Navbar, Container, Row, Image, Nav, Col, Card, ProgressBar} from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookSquare, faFirefox, faYoutube, faTwitter} from '@fortawesome/free-brands-svg-icons';
 import { faMobileAlt, faMicrochip, faMapMarkedAlt, faPhoneVolume, faEnvelope} from '@fortawesome/free-solid-svg-icons';
